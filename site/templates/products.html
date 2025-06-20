@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2 class="text-xl font-bold mb-6">Available Coal Grades</h2>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {% for p in products %}
+      <div class="rounded-xl bg-white shadow p-6 border">
+        <h3 class="text-lg font-semibold mb-1">{{ p.name }}</h3>
+        <p class="text-sm text-gray-500 mb-4">
+          Grade {{ p.grade }} · {{ p.kcal }} kcal/kg
+        </p>
+
+        <p class="text-2xl font-bold mb-6">₹ {{ p.price }} / ton</p>
+
+        <a href="/quote?product={{ p.name }}"
+           class="inline-block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">
+          Request quote
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
