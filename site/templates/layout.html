@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Coal Trading Co.</title>
+
+  <!-- Tailwind CSS via CDN (fine for development) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Small viewport tweak -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100 text-gray-800">
+
+  <!-- ----------  TOP NAV  ---------- -->
+  <header class="bg-black text-white px-6 py-4">
+    <h1 class="text-2xl font-semibold">Coal Trading&nbsp;Co.</h1>
+  </header>
+
+  <!-- ----------  PAGE CONTENT  ---------- -->
+  <main class="flex-1 p-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ----------  FOOTER  ---------- -->
+  <footer class="text-center text-sm text-gray-500 py-4">
+    &copy; {{ year }} Coal Trading&nbsp;Co.
+  </footer>
+
+</body>
+</html>
