@@ -1,31 +1,49 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Coal Trading Co.</title>
+{# ----------------------------------------------
+    templates/base.html
+    my very first “layout” file – every page will
+    plug its own content into the {% block content %}
+    spot below.
+    ---------------------------------------------- #}
+ 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <!-- basic meta stuff -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   <title>Coal Hub</title>
+   <a href="/dashboard" class="hover:underline">Dashboard</a>
 
-  <!-- Tailwind CSS via CDN (fine for development) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Small viewport tweak -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body class="min-h-screen flex flex-col bg-gray-100 text-gray-800">
-
-  <!-- ----------  TOP NAV  ---------- -->
-  <header class="bg-black text-white px-6 py-4">
-    <h1 class="text-2xl font-semibold">Coal Trading&nbsp;Co.</h1>
-  </header>
-
-  <!-- ----------  PAGE CONTENT  ---------- -->
-  <main class="flex-1 p-8">
-    {% block content %}{% endblock %}
-  </main>
-
-  <!-- ----------  FOOTER  ---------- -->
-  <footer class="text-center text-sm text-gray-500 py-4">
-    &copy; {{ year }} Coal Trading&nbsp;Co.
-  </footer>
-
-</body>
-</html>
+   <!-- quick-and-dirty Tailwind CDN (fine while I’m learning) -->
+   <script src="https://cdn.tailwindcss.com"></script>
+ </head>
+ 
+ <body class="flex flex-col min-h-screen bg-gray-100 text-gray-800">
+ 
+   <!-- top banner + nav -->
+   <header class="bg-black text-white">
+     <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+       <h1 class="text-2xl font-bold">Coal Hub</h1>
+ 
+       <!-- super-simple nav; will upgrade later -->
+       <nav class="space-x-6 text-sm">
+         <a href="/" class="hover:underline">Home</a>
+         <a href="/products" class="hover:underline">Products</a>
+       </nav>
+     </div>
+   </header>
+ 
+   <!-- page-specific stuff gets slotted in here -->
+   <main class="flex-1 max-w-5xl mx-auto p-8">
+     {% block content %}{% endblock %}
+   </main>
+ 
+   <!-- footer -->
+   <footer class="text-center text-xs text-gray-500 py-4">
+     © {{ year }} Coal Hub • built for my portfolio project
+   </footer>
+ 
+ </body>
+ </html>
+ 

@@ -1,0 +1,51 @@
+{# templates/dashboard.html – simple analytics view #}
+
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-xl font-semibold mb-6">Quote dashboard</h2>
+
+<div class="grid gap-8 md:grid-cols-2">
+  <!-- bar chart -->
+  <div>
+    <h3 class="text-sm text-gray-600 mb-2">Requests by product</h3>
+    <canvas id="byProduct"></canvas>
+  </div>
+
+  <!-- line chart -->
+  <div>
+    <h3 class="text-sm text-gray-600 mb-2">Requests by month</h3>
+    <canvas id="byMonth"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // 1) bar: product counts
+  new Chart(document.getElementById("byProduct"), {
+    type: "bar",
+    data: {
+      labels: {{ labels_product|tojson }},
+      datasets: [{
+        label: "Requests",
+        data:  {{ data_product|tojson }}
+      }]
+    }
+  });
+
+  // 2) line: requests timeline
+  new Chart(document.getElementById("byMonth"), {
+    type: "line",
+    data: {
+      labels: {{ labels_month|tojson }},
+      datasets: [{
+        label: "Requests",
+        data:  {{ data_month|tojson }},
+        fill: false
+      }]
+    }
+  });
+</script>
+
+{% endblock %}
+

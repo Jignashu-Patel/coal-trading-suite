@@ -1,0 +1,60 @@
+{# -----------------------------------------------------------
+    templates/quote.html
+    “get a quote” form – visitors fill this out, we stash the
+    answers in quote_requests.csv (handled in app.py)
+    ----------------------------------------------------------- #}
+ 
+ {% extends "layout.html" %}
+ 
+ {% block content %}
+ 
+   <!-- page title -->
+   <h2 class="text-xl font-semibold mb-6">Ask for a price</h2>
+ 
+   <!-- basic form – POSTs back to /quote -->
+   <form method="post" action="/quote" class="max-w-md space-y-4">
+ 
+     <!-- name input -->
+     <label class="block">
+       <span class="text-sm">Your name</span>
+       <input name="name" required
+              class="w-full border rounded px-3 py-2">
+     </label>
+ 
+     <!-- email input -->
+     <label class="block">
+       <span class="text-sm">Email</span>
+       <input type="email" name="email" required
+              class="w-full border rounded px-3 py-2">
+     </label>
+ 
+     <!-- product picker -->
+     <label class="block">
+       <span class="text-sm">Choose a product</span>
+       <select name="product"
+               class="w-full border rounded px-3 py-2">
+         {# list comes from app.py – PRODUCTS list #}
+         {% for p in products %}
+           <option value="{{ p.name }}"
+                   {% if p.name == preselect %}selected{% endif %}>
+             {{ p.name }}
+           </option>
+         {% endfor %}
+       </select>
+     </label>
+ 
+     <!-- quantity input -->
+     <label class="block">
+       <span class="text-sm">Quantity (in tonnes)</span>
+       <input type="number" min="1" name="tonnes" required
+              class="w-full border rounded px-3 py-2">
+     </label>
+ 
+     <!-- submit button -->
+     <button class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800">
+       Send request
+     </button>
+   </form>
+ 
+ {% endblock %}
+ 

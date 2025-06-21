@@ -1,16 +1,28 @@
-{% extends "layout.html" %}
-
-{% block content %}
-  <h2 class="text-xl font-bold mb-4">Welcome!</h2>
-
-  <p class="mb-6">
-    This site will soon list our coal grades, prices, and delivery options,
-    plus an internal analytics dashboard for order margins and inventory.
-  </p>
-
-  <a href="#"
-     class="inline-block bg-black text-white px-6 py-3 rounded-lg shadow
-            hover:bg-gray-800 transition">
-     Get a quote
-  </a>
-{% endblock %}
+{# -------------
+    templates/index.html
+    basic landing page
+    ------------- #}
+ 
+ {% extends "layout.html" %}
+ 
+ {% block content %}
+   <!-- headline -->
+   <h2 class="text-xl font-semibold mb-4">
+     Welcome to our little coal corner!
+   </h2>
+ 
+   <!-- short blurb -->
+   <p class="mb-6 leading-relaxed">
+     In the next sprint this page will show every coal grade we stock,
+     the going price, and a link to our internal dashboard where we track
+     margin and inventory numbers.
+   </p>
+ 
+   <!-- temporary CTA button -->
+   <a class="bg-black text-white px-6 py-3 rounded-lg shadow-md
+             hover:bg-gray-800 transition-colors"
+      href="/quote">
+       Get a quote
+   </a>
+ {% endblock %}
+ 
