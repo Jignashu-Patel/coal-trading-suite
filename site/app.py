@@ -91,5 +91,5 @@ def dashboard():
 
 # -------------------------------------------------
 if __name__ == "__main__":
-    # change the port if 5004 is busy, e.g. port=5004
-    app.run(debug=True, port=5004)
+    # change the port if 5003 is busy, e.g. port=5004
+    app.run(debug=True, port=5003)
